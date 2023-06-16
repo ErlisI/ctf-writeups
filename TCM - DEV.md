@@ -121,10 +121,8 @@ The object is to acquire root access and receive the flag via any means possible
 - After running `dirbuster`, there were subpages that lead to a massive lead for me to exploit this machine because everyone was able to register, and this [exploit](https://www.exploit-db.com/exploits/48411) required just that :)
     - <img width="962" alt="Screenshot_2023-06-05_at_7 34 52_PM" src="https://github.com/ErlisI/ctf-writeups/assets/63165733/b5310c52-fa69-4ef9-9255-3665f2438821">
 
-        
-
-<img width="583" alt="Screenshot_2023-06-05_at_7 37 43_PM" src="https://github.com/ErlisI/ctf-writeups/assets/63165733/cb8641c4-3822-481e-bf27-e3863aa1a858">
-<img width="688" alt="Screenshot_2023-06-05_at_7 37 57_PM" src="https://github.com/ErlisI/ctf-writeups/assets/63165733/1bcc6e6a-cd8e-4cbe-99be-1e4690cd4212">
+     - <img width="583" alt="Screenshot_2023-06-05_at_7 37 43_PM" src="https://github.com/ErlisI/ctf-writeups/assets/63165733/cb8641c4-3822-481e-bf27-e3863aa1a858">
+     - <img width="688" alt="Screenshot_2023-06-05_at_7 37 57_PM" src="https://github.com/ErlisI/ctf-writeups/assets/63165733/1bcc6e6a-cd8e-4cbe-99be-1e4690cd4212">
 
 
 - There we go, that's the user (for which the initials were found in the zip file)
