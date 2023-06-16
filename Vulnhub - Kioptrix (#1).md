@@ -239,3 +239,5 @@ Nmap done: 1 IP address (1 host up) scanned in 30.45 seconds
     - Root access gained
         
         ![Screenshot 2023-06-01 at 11.52.27 AM.png](Vulnhub%20-%20Kioptrix%20(#1)%20a38e2842a9ab4550a4b0143024d8701e/Screenshot_2023-06-01_at_11.52.27_AM.png)
+        
+***Also check it out [here](https://e-ctf-writeups.notion.site/Vulnhub-Kioptrix-1-a38e2842a9ab4550a4b0143024d8701e)
