@@ -135,38 +135,43 @@ Nmap done: 1 IP address (1 host up) scanned in 30.45 seconds
     - OpenSSH 2.9p2
 - Trying to connect to ssh
     
-    ![Screenshot 2023-06-01 at 11.03.09 AM.png](Vulnhub%20-%20Kioptrix%20(#1)%20a38e2842a9ab4550a4b0143024d8701e/Screenshot_2023-06-01_at_11.03.09_AM.png)
+    - <img width="1172" alt="Screenshot_2023-06-01_at_11 03 09_AM" src="https://github.com/ErlisI/ctf-writeups/assets/63165733/046d5e93-1d35-4f71-a9b0-0b44f582fb2e">
+
     
 
 ***Port 80/443***
 
 - Port 80
     - Some “Juicy” information
-        - + Apache/1.3.20 - Apache 1.x up 1.2.34 are vulnerable to a remote DoS and possible code execution.
+        -  Apache/1.3.20 - Apache 1.x up 1.2.34 are vulnerable to a remote DoS and possible code execution.
             - [https://www.exploit-db.com/exploits/764](https://www.exploit-db.com/exploits/764)
-        - + mod_ssl/2.8.4 - mod_ssl 2.8.7 and lower are vulnerable to a remote buffer overflow which may allow a remote shell.
+        -  mod_ssl/2.8.4 - mod_ssl 2.8.7 and lower are vulnerable to a remote buffer overflow which may allow a remote shell.
             - [https://www.rapid7.com/db/vulnerabilities/HTTP-MODS-0003/](https://www.rapid7.com/db/vulnerabilities/HTTP-MODS-0003/)
             - https://github.com/heltonWernik/OpenLuck
     
 - Port 443
     - Nothing we can find or do here
 
-![Screenshot 2023-06-01 at 10.31.53 AM.png](Vulnhub%20-%20Kioptrix%20(#1)%20a38e2842a9ab4550a4b0143024d8701e/Screenshot_2023-06-01_at_10.31.53_AM.png)
+- <img width="578" alt="Screenshot_2023-06-01_at_10 31 53_AM" src="https://github.com/ErlisI/ctf-writeups/assets/63165733/2ec1bfdb-fed8-4c3b-9035-c3505edf31b7">
+
 
 ***Port 139***
 
 - Samba smb
     - Finding the `smb` version using `Metasploit`
         
-        ![Screenshot 2023-06-01 at 11.26.45 AM.png](Vulnhub%20-%20Kioptrix%20(#1)%20a38e2842a9ab4550a4b0143024d8701e/Screenshot_2023-06-01_at_11.26.45_AM.png)
+        - <img width="171" alt="Screenshot_2023-06-01_at_11 26 45_AM" src="https://github.com/ErlisI/ctf-writeups/assets/63165733/e2b466ad-896d-42e3-8a01-4c2a6c23130b">
+
         
     - Found an auxiliary scanner to find the `smb` version. Now all we have to do is set the `RHOST (the target)`
         
-        ![Screenshot 2023-06-01 at 11.28.20 AM.png](Vulnhub%20-%20Kioptrix%20(#1)%20a38e2842a9ab4550a4b0143024d8701e/Screenshot_2023-06-01_at_11.28.20_AM.png)
+        - <img width="1140" alt="Screenshot_2023-06-01_at_11 28 20_AM" src="https://github.com/ErlisI/ctf-writeups/assets/63165733/6bdb7cd5-8a03-4580-a6c4-7593fee12522">
+
         
     - Found the exact version
         
-        ![Screenshot 2023-06-01 at 11.30.25 AM.png](Vulnhub%20-%20Kioptrix%20(#1)%20a38e2842a9ab4550a4b0143024d8701e/Screenshot_2023-06-01_at_11.30.25_AM.png)
+        - <img width="559" alt="Screenshot_2023-06-01_at_11 30 25_AM" src="https://github.com/ErlisI/ctf-writeups/assets/63165733/65dd841c-af4b-4901-bda3-b6ea8bdd7197">
+
         
         - [https://www.rapid7.com/db/modules/exploit/linux/samba/trans2open/](https://www.rapid7.com/db/modules/exploit/linux/samba/trans2open/)
         - [https://www.cvedetails.com/vulnerability-list/vendor_id-102/product_id-171/version_id-373318/Samba-Samba-2.2.1a.html](https://www.cvedetails.com/vulnerability-list/vendor_id-102/product_id-171/version_id-373318/Samba-Samba-2.2.1a.html)
@@ -186,11 +191,12 @@ Nmap done: 1 IP address (1 host up) scanned in 30.45 seconds
 - Using OpenFuck, we see that we have the exact version exploitable of the Apache server ~ `0x6b`
 - Running it
     
-    ![Screenshot 2023-06-01 at 11.37.25 AM.png](Vulnhub%20-%20Kioptrix%20(#1)%20a38e2842a9ab4550a4b0143024d8701e/Screenshot_2023-06-01_at_11.37.25_AM.png)
+    - <img width="358" alt="Screenshot_2023-06-01_at_11 37 25_AM" src="https://github.com/ErlisI/ctf-writeups/assets/63165733/57008e0f-601e-437e-b86c-adf31ad1ab40">
+
     
 - Root access gained
-    
-    ![Screenshot 2023-06-01 at 11.39.14 AM.png](Vulnhub%20-%20Kioptrix%20(#1)%20a38e2842a9ab4550a4b0143024d8701e/Screenshot_2023-06-01_at_11.39.14_AM.png)
+    - <img width="322" alt="Screenshot_2023-06-01_at_11 39 14_AM" src="https://github.com/ErlisI/ctf-writeups/assets/63165733/085e2470-41c8-4b25-99a5-4140649cf39c">
+
     
     ```bash
     cat /etc/shadow
@@ -234,10 +240,10 @@ Nmap done: 1 IP address (1 host up) scanned in 30.45 seconds
 - Using the information that I got from the version. `trans2open` seemed to do the trick using `Metasploit`
     - `Meterpreter session 5 closed.  Reason: Died` ~ after the first try, when looking at the `options` we change the payload from `staged` to `non-staged`
         
-        ![Screenshot 2023-05-30 at 4.49.54 PM.png](Vulnhub%20-%20Kioptrix%20(#1)%20a38e2842a9ab4550a4b0143024d8701e/Screenshot_2023-05-30_at_4.49.54_PM.png)
+        - <img width="1028" alt="Screenshot_2023-05-30_at_4 49 54_PM" src="https://github.com/ErlisI/ctf-writeups/assets/63165733/bca52fd0-6720-47ec-970a-db4fc1f697cd">
+
         
     - Root access gained
+        - <img width="290" alt="Screenshot_2023-06-01_at_11 52 27_AM" src="https://github.com/ErlisI/ctf-writeups/assets/63165733/ce4af773-2583-4787-a891-4ed705caf01f">
         
-        ![Screenshot 2023-06-01 at 11.52.27 AM.png](Vulnhub%20-%20Kioptrix%20(#1)%20a38e2842a9ab4550a4b0143024d8701e/Screenshot_2023-06-01_at_11.52.27_AM.png)
-        
-***Also check it out [here](https://e-ctf-writeups.notion.site/Vulnhub-Kioptrix-1-a38e2842a9ab4550a4b0143024d8701e)
+***Also check it out [here](https://e-ctf-writeups.notion.site/Vulnhub-Kioptrix-1-a38e2842a9ab4550a4b0143024d8701e)***
